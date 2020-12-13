@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private Button move;
-    ObjectAnimator mAnimator;
-    AnimatorSet animatorSet = new AnimatorSet();
+    ObjectAnimator animationX, animationY, rotateAnimation;
+    AnimatorSet image1 = new AnimatorSet();
 
 
 
@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         move = (Button) findViewById(R.id.btnMove);
 
-        ObjectAnimator animationX = ObjectAnimator.ofFloat(imageView, "x", 150f, 500f);
-        ObjectAnimator animationY = ObjectAnimator.ofFloat(imageView, "y", 150f, 500f);
-        ObjectAnimator rotateAnimation = ObjectAnimator.ofFloat(imageView,"rotation", 0f, 720f);
+        animationX = ObjectAnimator.ofFloat(imageView, "x", 150f, 500f);
+        animationY = ObjectAnimator.ofFloat(imageView, "y", 150f, 500f);
+        rotateAnimation = ObjectAnimator.ofFloat(imageView,"rotation", 0f, 720f);
         animationX.setDuration(1000);
         animationY.setDuration(1000);
         rotateAnimation.setDuration(1500);
-        animatorSet.playTogether(animationX, animationY, rotateAnimation);
+        image1.playTogether(animationX, animationY, rotateAnimation);
 
 
 
@@ -50,6 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickMove(View view) {
 
-        animatorSet.start();
+        image1.start();
     }
 }
