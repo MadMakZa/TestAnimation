@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,24 +33,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void init(){
+    public void init() {
         imageView = findViewById(R.id.imageView);
         move = (Button) findViewById(R.id.btnMove);
-
-        animationX = ObjectAnimator.ofFloat(imageView, "x", 150f, 500f);
-        animationY = ObjectAnimator.ofFloat(imageView, "y", 150f, 500f);
-        rotateAnimation = ObjectAnimator.ofFloat(imageView,"rotation", 0f, 720f);
-        animationX.setDuration(1000);
-        animationY.setDuration(1000);
-        rotateAnimation.setDuration(1500);
-        image1.playTogether(animationX, animationY, rotateAnimation);
-
 
 
     }
 
-    public void onClickMove(View view) {
+    public void animationFirstObject(){
+        Double generateX = (Double) (0 + Math.random() * 1000);
+        Double generateY = (Double) (500 + Math.random() * 1000);
+        float xEnd = generateX.floatValue();
+        float yEnd = generateY.floatValue();
 
+        AnimatorSet image1 = new AnimatorSet();
+        animationX = ObjectAnimator.ofFloat(imageView, "x", -300f, xEnd);
+        animationY = ObjectAnimator.ofFloat(imageView, "y", -300f, yEnd);
+        rotateAnimation = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 720f);
+        animationX.setDuration(1000);
+        animationY.setDuration(1000);
+        rotateAnimation.setDuration(1500);
+        image1.playTogether(animationX, animationY, rotateAnimation);
         image1.start();
+        }
+
+
+
+
+    public void onClickMove(View view) {
+        animationFirstObject();
     }
 }
