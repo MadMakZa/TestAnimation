@@ -17,13 +17,9 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    private ImageView imageView, imageView2, imageView3;
     private Button move;
     ObjectAnimator animationX, animationY, rotateAnimation;
-    AnimatorSet image1 = new AnimatorSet();
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +31,70 @@ public class MainActivity extends AppCompatActivity {
 
     public void init() {
         imageView = findViewById(R.id.imageView);
+        imageView2 = findViewById(R.id.imageView2);
+        imageView3 = findViewById(R.id.imageView3);
         move = (Button) findViewById(R.id.btnMove);
 
 
     }
+    public class Dice {
+        public void animationFirstObject() {
+            Double generateX = (Double) (0 + Math.random() * 1000);
+            Double generateY = (Double) (500 + Math.random() * 1000);
+            float xEnd = generateX.floatValue();
+            float yEnd = generateY.floatValue();
 
-    public void animationFirstObject(){
-        Double generateX = (Double) (0 + Math.random() * 1000);
-        Double generateY = (Double) (500 + Math.random() * 1000);
-        float xEnd = generateX.floatValue();
-        float yEnd = generateY.floatValue();
-
-        AnimatorSet image1 = new AnimatorSet();
-        animationX = ObjectAnimator.ofFloat(imageView, "x", -300f, xEnd);
-        animationY = ObjectAnimator.ofFloat(imageView, "y", -300f, yEnd);
-        rotateAnimation = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 720f);
-        animationX.setDuration(1000);
-        animationY.setDuration(1000);
-        rotateAnimation.setDuration(1500);
-        image1.playTogether(animationX, animationY, rotateAnimation);
-        image1.start();
+            AnimatorSet image1 = new AnimatorSet();
+            animationX = ObjectAnimator.ofFloat(imageView, "x", -300f, xEnd);
+            animationY = ObjectAnimator.ofFloat(imageView, "y", -300f, yEnd);
+            rotateAnimation = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 720f);
+            animationX.setDuration(1000);
+            animationY.setDuration(1000);
+            rotateAnimation.setDuration(1500);
+            image1.playTogether(animationX, animationY, rotateAnimation);
+            image1.start();
         }
+        public void animationTwoObject() {
+            Double generateX = (Double) (0 + Math.random() * 1000);
+            Double generateY = (Double) (500 + Math.random() * 1000);
+            float xEnd = generateX.floatValue();
+            float yEnd = generateY.floatValue();
+
+            AnimatorSet image2 = new AnimatorSet();
+            animationX = ObjectAnimator.ofFloat(imageView2, "x", -300f, xEnd);
+            animationY = ObjectAnimator.ofFloat(imageView2, "y", -300f, yEnd);
+            rotateAnimation = ObjectAnimator.ofFloat(imageView2, "rotation", 0f, 720f);
+            animationX.setDuration(1000);
+            animationY.setDuration(1000);
+            rotateAnimation.setDuration(1500);
+            image2.playTogether(animationX, animationY, rotateAnimation);
+            image2.start();
+        }
+        public void animationThreeObject() {
+            Double generateX = (Double) (0 + Math.random() * 1000);
+            Double generateY = (Double) (500 + Math.random() * 1000);
+            float xEnd = generateX.floatValue();
+            float yEnd = generateY.floatValue();
+
+            AnimatorSet image3 = new AnimatorSet();
+            animationX = ObjectAnimator.ofFloat(imageView3, "x", -300f, xEnd);
+            animationY = ObjectAnimator.ofFloat(imageView3, "y", -300f, yEnd);
+            rotateAnimation = ObjectAnimator.ofFloat(imageView3, "rotation", 0f, 720f);
+            animationX.setDuration(1000);
+            animationY.setDuration(1000);
+            rotateAnimation.setDuration(1500);
+            image3.playTogether(animationX, animationY, rotateAnimation);
+            image3.start();
+        }
+    }
 
 
 
 
     public void onClickMove(View view) {
-        animationFirstObject();
+        Dice dice = new Dice();
+        dice.animationFirstObject();
+        dice.animationTwoObject();
+        dice.animationThreeObject();
     }
 }
