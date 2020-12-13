@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         ObjectAnimator animationY = ObjectAnimator.ofFloat(imageView, "y", 150f, 500f);
         ObjectAnimator rotateAnimation = ObjectAnimator.ofFloat(imageView,"rotation", 0f, 720f);
         animationX.setDuration(1000);
+        animationY.setDuration(1000);
+        rotateAnimation.setDuration(1500);
         animatorSet.playTogether(animationX, animationY, rotateAnimation);
 
 
