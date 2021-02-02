@@ -47,22 +47,23 @@ public class MainActivity extends AppCompatActivity {
         move = (Button) findViewById(R.id.btnMove);
 
         //взять размер дисплея устройства
-//        DisplayMetrics displayMetrics = new DisplayMetrics();
-//        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//        screenWidth = displayMetrics.widthPixels;
-//        screenHeight = displayMetrics.heightPixels;
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenWidth = displayMetrics.widthPixels;
+        screenHeight = displayMetrics.heightPixels;
 
         //или так
-        Display display = getWindowManager().getDefaultDisplay();
-        screenWidth = display.getWidth();
-        screenHeight = display.getHeight();
+//        Display display = getWindowManager().getDefaultDisplay();
+//        screenWidth = display.getWidth();
+//        screenHeight = display.getHeight();
 
 
     }
     public class Dice {
         public void animationFirstObject() {
-            Double generateX = (Double) (0 + Math.random() * 1000);
-            Double generateY = (Double) (500 + Math.random() * 1000);
+            //конечные точки
+            Double generateX = (Double) (0 + Math.random() * screenWidth);
+            Double generateY = (Double) ((screenHeight /2) + Math.random() * (screenHeight-(screenHeight/1.5)));
             float xEnd = generateX.floatValue();
             float yEnd = generateY.floatValue();
 
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             rotateAnimation = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 720f);
             animationX.setDuration(1000);
             animationY.setDuration(1000);
-            rotateAnimation.setDuration(1500);
+            rotateAnimation.setDuration(1000);
             image1.playTogether(animationX, animationY, rotateAnimation);
             image1.start();
 
